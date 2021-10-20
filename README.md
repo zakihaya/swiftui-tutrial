@@ -1,3 +1,3 @@
 ## SwiftUIチュートリアル
 
-https://hirlab.net/nblog/category/programming/art_1375/
+https://swiftui.i-app-tec.com
