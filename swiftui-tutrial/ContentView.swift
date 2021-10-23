@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @State var buttonText = "Button"
+    @State var isTapped = false
     
     var body: some View {
         VStack {
@@ -17,7 +18,19 @@ struct ContentView: View {
                 .font(.largeTitle)
                 .foregroundColor(Color.green)
             .padding()
-            Button(action: { buttonText = "Tapped" }, label: { Text(buttonText).font(.largeTitle) })
+            Button(
+                action: {
+                    isTapped.toggle()
+                    if (isTapped) {
+                        buttonText = "Tapped"
+                    } else {
+                        buttonText = "Button"
+                    }
+                }, label: {
+                    Text(buttonText).font(.largeTitle).padding(.all)
+                    
+                }
+            ).overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 1))
         }
     }
 }
