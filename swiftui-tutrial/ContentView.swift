@@ -8,11 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var buttonText = "Button"
+    
     var body: some View {
-        Text("Hello, world!!!!!")
-            .font(.largeTitle)
-            .foregroundColor(Color.green)
+        VStack {
+            Text("Hello, world!!!!!")
+                .font(.largeTitle)
+                .foregroundColor(Color.green)
             .padding()
+            Button(action: { buttonText = "Tapped" }, label: { Text(buttonText).font(.largeTitle) })
+        }
     }
 }
 
