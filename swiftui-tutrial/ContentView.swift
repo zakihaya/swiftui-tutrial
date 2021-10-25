@@ -11,6 +11,7 @@ struct ContentView: View {
     
     @State var buttonText = "Button"
     @State var isTapped = false
+    @State var imageFile = "dog1"
     
     var body: some View {
         VStack {
@@ -18,19 +19,26 @@ struct ContentView: View {
                 .font(.largeTitle)
                 .foregroundColor(Color.green)
             .padding()
+            
             Button(
                 action: {
                     isTapped.toggle()
                     if (isTapped) {
                         buttonText = "Tapped"
+                        imageFile = "dog2"
                     } else {
                         buttonText = "Button"
+                        imageFile = "dog1"
                     }
                 }, label: {
                     Text(buttonText).font(.largeTitle).padding(.all)
                     
                 }
             ).overlay(RoundedRectangle(cornerRadius: 10).stroke(Color.blue, lineWidth: 1))
+            Image(imageFile)
+                .resizable()
+                .scaledToFill()
+                .frame(width: 150.0, height: 150.0)
         }
     }
 }
