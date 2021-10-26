@@ -13,6 +13,9 @@ struct ContentView: View {
     @State var isTapped = false
     @State var imageFile = "dog1"
     
+    @State private var userName = ""
+    @State private var isEditing = false
+    
     var body: some View {
         VStack {
             Text("Hello, world!!!!!")
@@ -39,6 +42,21 @@ struct ContentView: View {
                 .resizable()
                 .scaledToFill()
                 .frame(width: 150.0, height: 150.0)
+
+            TextField(
+                "User name (email)",
+                text: $userName
+            ) {
+                isEditing in
+                    self.isEditing = isEditing
+            } onCommit: {
+                // validate(name)
+            }
+            .autocapitalization(.none)
+            .disableAutocorrection(true)
+            .border(Color(UIColor.separator))
+            Text("Hello \(userName)")
+                .foregroundColor(isEditing ? .red : .blue)
         }
     }
 }
