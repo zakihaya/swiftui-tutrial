@@ -57,7 +57,17 @@ struct ContentView: View {
             .border(Color(UIColor.separator))
             Text("Hello \(userName)")
                 .foregroundColor(isEditing ? .red : .blue)
+            NavigationView {
+                NavigationLink(destination: SecondView()) { Text("Move to SecondView") }
+            }
         }
+    }
+}
+
+struct SecondView: View {
+    var body: some View {
+        Text("SecondView")
+            .padding()
     }
 }
 
