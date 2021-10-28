@@ -8,7 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
-    
+    var body: some View {
+        NavigationView {
+            NavigationLink(destination: SecondView(info: "This is param")) { Text("Move to SecondView") }
+        }
+    }
+}
+
+struct SecondView: View {
     @State var buttonText = "Button"
     @State var isTapped = false
     @State var imageFile = "dog1"
@@ -16,8 +23,16 @@ struct ContentView: View {
     @State private var userName = ""
     @State private var isEditing = false
     
+    let info: String
+
     var body: some View {
         VStack {
+            Text("SecondView")
+                .padding()
+            
+            Text(info)
+                .padding()
+
             Text("Hello, world!!!!!")
                 .font(.largeTitle)
                 .foregroundColor(Color.green)
@@ -57,17 +72,8 @@ struct ContentView: View {
             .border(Color(UIColor.separator))
             Text("Hello \(userName)")
                 .foregroundColor(isEditing ? .red : .blue)
-            NavigationView {
-                NavigationLink(destination: SecondView()) { Text("Move to SecondView") }
-            }
+            
         }
-    }
-}
-
-struct SecondView: View {
-    var body: some View {
-        Text("SecondView")
-            .padding()
     }
 }
 
