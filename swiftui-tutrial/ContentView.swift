@@ -11,6 +11,8 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             NavigationLink(destination: SecondView(info: "This is param")) { Text("Move to SecondView") }
+            .navigationTitle("Main Screen")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }
@@ -74,6 +76,8 @@ struct SecondView: View {
                 .foregroundColor(isEditing ? .red : .blue)
             
         }
+        .navigationTitle("Second Screen")
+        .navigationBarTitleDisplayMode(.automatic)
     }
 }
 
