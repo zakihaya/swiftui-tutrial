@@ -10,10 +10,43 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationView {
-            NavigationLink(destination: SecondView(info: "This is param")) { Text("Move to SecondView") }
-            .navigationTitle("Main Screen")
-            .navigationBarTitleDisplayMode(.inline)
+            ZStack {
+                Text("Hello World")
+                    .padding()
+            }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    NavigationLink(destination: PreviousView()){
+                        Text("Previous")
+                    }
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink(destination: NextView()){
+                        Text("Next")
+                    }
+                }
+            }
+            
+//            NavigationLink(destination: SecondView(info: "This is param")) { Text("Move to SecondView") }
+//            .navigationTitle("Main Screen")
+//            .navigationBarTitleDisplayMode(.inline)
         }
+    }
+}
+
+struct PreviousView: View {
+    var body: some View {
+        VStack{
+        }
+        .navigationTitle("PreviousView")
+    }
+}
+ 
+struct NextView: View {
+    var body: some View {
+        VStack{
+        }
+        .navigationTitle("NextView")
     }
 }
 
