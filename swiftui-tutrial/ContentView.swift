@@ -11,8 +11,14 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Text("Hello World")
-                    .padding()
+                VStack {
+                    NavigationLink(destination: SecondView(info: "This is param")) { Text("Move to SecondView")
+                    }
+                    .navigationBarTitleDisplayMode(.inline)
+                    NavigationLink(destination: GestureRecognizeView()) { Text("Move to GestureRecognizeView")
+                    }
+                    .navigationBarTitleDisplayMode(.inline)
+                }
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -26,11 +32,31 @@ struct ContentView: View {
                     }
                 }
             }
-            
-//            NavigationLink(destination: SecondView(info: "This is param")) { Text("Move to SecondView") }
-//            .navigationTitle("Main Screen")
-//            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("Main Screen")
         }
+    }
+}
+
+struct GestureRecognizeView: View {
+    @State var flg = false
+    
+    var body: some View {
+        VStack {
+            Text("GestureRecognizeView")
+                .padding()
+            textElement()
+                .onTapGesture {
+                flg.toggle()
+            }
+            .navigationTitle("GestureRecognizeView")
+        }
+    }
+    
+    func textElement() -> Text {
+        if (flg) {
+            return Text("on")
+        }
+        return Text("tap me")
     }
 }
 
