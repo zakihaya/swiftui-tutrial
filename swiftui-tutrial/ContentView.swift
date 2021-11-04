@@ -39,24 +39,30 @@ struct ContentView: View {
 
 struct GestureRecognizeView: View {
     @State var flg = false
+    @State var flg2 = false
     
     var body: some View {
         VStack {
             Text("GestureRecognizeView")
                 .padding()
-            textElement()
+            textElement(tapText: "tap me", targetFlg: flg)
                 .onTapGesture {
-                flg.toggle()
-            }
-            .navigationTitle("GestureRecognizeView")
+                    flg.toggle()
+                }
+            textElement(tapText: "tap me 2 times", targetFlg: flg2)
+                .onTapGesture(count: 2) {
+                    flg2.toggle()
+                }
+            
         }
+        .navigationTitle("GestureRecognizeView")
     }
     
-    func textElement() -> Text {
-        if (flg) {
+    func textElement(tapText: String, targetFlg: Bool) -> Text {
+        if (targetFlg) {
             return Text("on")
         }
-        return Text("tap me")
+        return Text(tapText)
     }
 }
 
