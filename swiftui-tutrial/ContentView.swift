@@ -40,6 +40,7 @@ struct ContentView: View {
 struct GestureRecognizeView: View {
     @State var flg = false
     @State var flg2 = false
+    @State var flgLongPress = false
     
     var body: some View {
         VStack {
@@ -52,6 +53,10 @@ struct GestureRecognizeView: View {
             textElement(tapText: "tap me 2 times", targetFlg: flg2)
                 .onTapGesture(count: 2) {
                     flg2.toggle()
+                }
+            textElement(tapText: "long tap", targetFlg: flgLongPress)
+                .onLongPressGesture {
+                    flgLongPress.toggle()
                 }
             
         }
