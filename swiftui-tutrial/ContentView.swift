@@ -55,7 +55,11 @@ struct GestureRecognizeView: View {
                     flg2.toggle()
                 }
             textElement(tapText: "long tap", targetFlg: flgLongPress)
-                .onLongPressGesture {
+                .onLongPressGesture(minimumDuration: 2,
+                                    maximumDistance: 1000,
+                                    pressing: { pressed in
+                    print("pressed: \(pressed)")
+                }) {
                     flgLongPress.toggle()
                 }
             
