@@ -21,6 +21,9 @@ struct ContentView: View {
                     NavigationLink(destination: DrugGestureView()) { Text("Move to DrugGestureView")
                     }
                     .navigationBarTitleDisplayMode(.inline)
+                    NavigationLink(destination: MagnificationGestueView()) { Text("Move to MagnificationGestueView")
+                    }
+                    .navigationBarTitleDisplayMode(.inline)
                 }
             }
             .toolbar {
@@ -37,6 +40,23 @@ struct ContentView: View {
             }
             .navigationTitle("Main Screen")
         }
+    }
+}
+
+struct MagnificationGestueView: View {
+    @GestureState var magnifyBy = CGFloat(1.0)
+    
+    var magnification: some Gesture {
+        MagnificationGesture()
+            .updating($magnifyBy) { currentState, gestureState, transaction in
+                gestureState = currentState
+            }
+    }
+    
+    var body: some View {
+        Circle()
+            .frame(width: 100 * magnifyBy, height: 100 * magnifyBy, alignment: .center)
+            .gesture(magnification)
     }
 }
 
