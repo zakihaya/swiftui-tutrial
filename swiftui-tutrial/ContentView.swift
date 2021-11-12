@@ -45,6 +45,7 @@ struct ContentView: View {
 
 struct MagnificationGestueView: View {
     @GestureState var magnifyBy = CGFloat(1.0)
+    @State var imageScaleValue: CGFloat = 1.0
     
     var magnification: some Gesture {
         MagnificationGesture()
@@ -57,6 +58,20 @@ struct MagnificationGestueView: View {
         Circle()
             .frame(width: 100 * magnifyBy, height: 100 * magnifyBy, alignment: .center)
             .gesture(magnification)
+            .padding()
+        Image("dog1")
+            .resizable()
+            .scaleEffect(imageScaleValue)
+            .frame(width: 200, height: 200)
+            .gesture(MagnificationGesture()
+                        .onChanged( { value in self.imageScaleValue = value } ))
+            .padding()
+        Button(action: {
+            self.imageScaleValue += 0.2
+        }) {
+            Text("Button")
+        }
+        .padding()
     }
 }
 
