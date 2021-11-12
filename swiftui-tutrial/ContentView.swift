@@ -23,6 +23,8 @@ struct ContentView: View {
                     .navigationBarTitleDisplayMode(.inline)
                     NavigationLink(destination: MagnificationGestueView()) { Text("Move to MagnificationGestueView")
                     }
+                    NavigationLink(destination: RotationGestureView()) { Text("Move to RotationGestureView")
+                    }
                     .navigationBarTitleDisplayMode(.inline)
                 }
             }
@@ -40,6 +42,24 @@ struct ContentView: View {
             }
             .navigationTitle("Main Screen")
         }
+    }
+}
+
+struct RotationGestureView: View {
+    @State var angle = Angle(degrees: 45.0)
+    
+    var rotation: some Gesture {
+        RotationGesture()
+            .onChanged { angle in
+                self.angle = angle
+            }
+    }
+    
+    var body: some View {
+        Rectangle()
+            .frame(width: 200, height: 300, alignment: .center)
+            .rotationEffect(angle)
+            .gesture(rotation)
     }
 }
 
