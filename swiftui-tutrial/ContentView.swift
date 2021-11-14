@@ -26,6 +26,9 @@ struct ContentView: View {
                     NavigationLink(destination: RotationGestureView()) { Text("Move to RotationGestureView")
                     }
                     .navigationBarTitleDisplayMode(.inline)
+                    NavigationLink(destination: StacksView()) { Text("Move to StacksView")
+                    }
+                    .navigationBarTitleDisplayMode(.inline)
                 }
             }
             .toolbar {
@@ -41,6 +44,18 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("Main Screen")
+        }
+    }
+}
+
+struct StacksView: View {
+    var body: some View {
+        VStack {
+            HStack {
+                Text("Item1")
+                Text("Item2")
+            }
+            Text("Hello world")
         }
     }
 }
