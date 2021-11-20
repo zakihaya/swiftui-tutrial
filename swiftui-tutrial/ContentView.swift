@@ -51,11 +51,18 @@ struct ContentView: View {
 struct StacksView: View {
     var body: some View {
         VStack {
+            Text("Hello world")
             HStack {
                 Text("Item1")
                 Text("Item2")
             }
-            Text("Hello world")
+            ZStack{
+                Circle()
+                    .frame(width: 300, height: 100, alignment: .center)
+                    .foregroundColor(.orange)
+                Text("on the circle")
+                    .padding()
+            }
         }
     }
 }
