@@ -29,6 +29,9 @@ struct ContentView: View {
                     NavigationLink(destination: StacksView()) { Text("Move to StacksView")
                     }
                     .navigationBarTitleDisplayMode(.inline)
+                    NavigationLink(destination: LazyStacksView()) { Text("Move to LazyStacksView")
+                    }
+                    .navigationBarTitleDisplayMode(.inline)
                 }
             }
             .toolbar {
@@ -45,6 +48,26 @@ struct ContentView: View {
             }
             .navigationTitle("Main Screen")
         }
+    }
+}
+
+struct LazyStacksView: View {
+    var body: some View {
+        ScrollView(.vertical) {
+            LazyVStack {
+                ForEach(1...1000000000000, id: \.self) {
+                    Text("Row \($0)")
+                }
+            }
+        }
+        // 下のコードは見えていないTextを全てrenderするので表示できない
+        // ScrollView(.vertical) {
+        //     LazyVStack {
+        //         ForEach(1...1000000000000, id: \.self) {
+        //             Text("Row \($0)")
+        //         }
+        //     }
+        // }
     }
 }
 
