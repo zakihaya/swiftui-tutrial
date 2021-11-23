@@ -54,7 +54,7 @@ struct ContentView: View {
 struct LazyStacksView: View {
     var body: some View {
         ScrollView(.vertical) {
-            LazyVStack {
+            LazyVStack(alignment: .trailing) {
                 ForEach(1...1000000000000, id: \.self) {
                     Text("Row \($0)")
                 }
